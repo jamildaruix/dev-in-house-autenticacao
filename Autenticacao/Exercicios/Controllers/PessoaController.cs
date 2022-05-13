@@ -7,8 +7,7 @@ using Bogus.Extensions.Brazil;
 namespace Exercicios.Controllers
 {
     /// <summary>
-    /// Exemplos de Contente Negations
-    /// Lib utilizada https://github.com/bchavez/Bogus
+    /// Exemplos de Contente Negations e Autorizações
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]

@@ -6,9 +6,6 @@ using Bogus.Extensions.Brazil;
 
 namespace Exercicios.Controllers
 {
-    /// <summary>
-    /// Exemplos de Contente Negations e Autorizações
-    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class PessoaController : ControllerBase

@@ -2,12 +2,13 @@
 using Exercicios.Request;
 using Microsoft.AspNetCore.Mvc;
 using Bogus.Extensions.Brazil;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace Exercicios.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize()]
     public class PessoaController : ControllerBase
     {
 
@@ -21,6 +22,7 @@ namespace Exercicios.Controllers
 
 
         [HttpGet()]
+        [AllowAnonymous]
         public ActionResult<IEnumerable<PessoaRequest>> GetAll()
         {
             return Ok(pessoas);
@@ -32,7 +34,6 @@ namespace Exercicios.Controllers
         {
             return Ok(pessoas!.Where(w => w.Id == id).FirstOrDefault());
         }
-
 
         [HttpPost()]
         public ActionResult<int> Post(PessoaRequest pessoaRequest)

@@ -18,6 +18,7 @@ builder.Services.AddControllers(options =>
     //options.ReturnHttpNotAcceptable = true;
 }).AddXmlSerializerFormatters();
 
+
 JwtConfiguracao.Secret = builder.Configuration.GetValue<string>("JWT:Secret");
 JwtConfiguracao.Issuer = builder.Configuration.GetValue<string>("JWT:Issuer");
 JwtConfiguracao.Audience = builder.Configuration.GetValue<string>("JWT:Audience");

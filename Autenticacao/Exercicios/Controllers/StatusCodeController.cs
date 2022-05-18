@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace Exercicios.Controllers
 {
@@ -9,6 +11,12 @@ namespace Exercicios.Controllers
     [Route("api/[controller]")]
     public class StatusCodeController : ControllerBase
     {
+        private readonly ILogger<StatusCodeController> logger;
+
+        public StatusCodeController(ILogger<StatusCodeController> logger)
+        {
+            this.logger = logger;
+        }
 
         /// <summary>
         /// 1xx Informatinal
@@ -25,10 +33,19 @@ namespace Exercicios.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("ExemploOkSuccess")]
-        public IActionResult ExemploOkSuccess()
+        public IActionResult ExemploOkSuccess([FromQuery] string valor)
         {
-            return Ok();
+            try
+            {
+                return Ok(new { ferramenta = "VS CODE");
+            }
+            catch (Exception ex)
+            {
+                logger.LogError("Erro:", ex);
+                return BadRequest(new { erro = "Erro na aplicação" });
+            }
         }
+
 
         /// <summary>
         /// 3xx Redirection
@@ -60,6 +77,21 @@ namespace Exercicios.Controllers
         public IActionResult ExemploServerError()
         {
             return StatusCode(StatusCodes.Status500InternalServerError);
+        }
+
+
+        [HttpGet("ExemploStatusCodeLargo")]
+        public IActionResult ExemploStatusCodeLargo(int valor)
+        {
+            if (valor > 100)
+            {
+                return StatusCode(HttpStatusCode.RequestEntityTooLarge.GetHashCode());
+            }
+            else
+            {
+                return Ok();
+            }
+            
         }
     }
 }

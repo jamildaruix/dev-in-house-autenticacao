@@ -1,33 +1,35 @@
-# Keycloak #
-
-https://www.keycloak.org/
+# <a href="https://www.keycloak.org/">Link Keycloack</a> #
 
 # Executar Docker Compose #
 
-Dentro do diretório ..\Keycloack executar o comando 
+<p>Dentro do diretório ..\Keycloack executar o comando </p>
 
-docker-compose up
-ou
-docker-compose up -d
+<p>docker-compose up</p>
+<p>ou</p>
+<p>docker-compose up -d</p>
 
 ## Detalhe do comando ##
 
-up                 Create and start containers
--d, --detach       Detached mode: Run containers in the background,
+<p>up                 Create and start containers</p>
+<p>
+    -d, --detach       Detached mode: Run containers in the background,
                         print new container names. Incompatible with
                         --abort-on-container-exit.
+</p>                
 
 # Dicas #
 
-Após subir a imagem docker utilizando o docker-compose entrar na url http://localhost:8080/auth/
-e  clicar na opção Administration Console
+<p>
+    Após subir a imagem docker utilizando o docker-compose entrar na url http://localhost:8080/auth/
+    e  clicar na opção Administration Console
+</p>
 
 <img src=".\images\Imagem01.jpg" />
 
-Login admin | Senha admin
+<p>Login admin | Senha admin</p>
 
 <img src=".\images\Imagem02.jpg" />
 
-Acesso
+<p>Acesso</p>
 
 <img src=".\images\Imagem03.jpg" />

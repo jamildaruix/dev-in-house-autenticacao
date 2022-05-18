@@ -1,4 +1,4 @@
-# [Keycloack](https://www.keycloak.org/){:target="_blank" rel="noopener"} #
+# [Keycloack](https://www.keycloak.org/) #
 
 
 # Executar Docker Compose #

@@ -8,7 +8,7 @@ namespace Exercicios.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize()]
+    [Authorize(Roles = "RoleController")]
     public class PessoaController : ControllerBase
     {
 
@@ -20,9 +20,7 @@ namespace Exercicios.Controllers
                 pessoas = CriarDadosFake();
         }
 
-
         [HttpGet()]
-        [AllowAnonymous]
         public ActionResult<IEnumerable<PessoaRequest>> GetAll()
         {
             return Ok(pessoas);
@@ -30,6 +28,7 @@ namespace Exercicios.Controllers
 
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public ActionResult<PessoaRequest> Get(int id)
         {
             return Ok(pessoas!.Where(w => w.Id == id).FirstOrDefault());

@@ -27,7 +27,12 @@ namespace Exercicios.Controllers
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", usuario) }),
+                Subject = new ClaimsIdentity(new[] 
+                { 
+                    new Claim("id", usuario),
+                    new Claim(ClaimTypes.Role, "Pessoa")
+                }),
+
                 Expires = DateTime.UtcNow.AddHours(1),
                 Issuer = JwtConfiguracao.Issuer,
                 Audience = JwtConfiguracao.Audience,
@@ -40,7 +45,7 @@ namespace Exercicios.Controllers
         }
 
         [HttpGet("{usuario}")]
-        [Authorize()]
+        [Authorize(Roles = "Admin")]
         public ActionResult<string> Get(string usuario)
         {
             Request.Headers.TryGetValue("Authorization", out var headerAuthorization);

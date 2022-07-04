@@ -1,6 +1,7 @@
 using Exercicios.Estatico;
 using Exercicios.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -43,7 +44,6 @@ builder.Services.AddAuthentication(x =>
         };
     });
 
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(swagger =>
@@ -80,6 +80,8 @@ builder.Services.AddSwaggerGen(swagger =>
                     }
                 });
 });
+
+builder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler, SampleAuthorizationMiddlewareResultHandler>();
 
 var devCorsPolicy = "devCorsPolicy";
 builder.Services.AddCors(options =>

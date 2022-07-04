@@ -37,7 +37,7 @@ namespace Exercicios.Controllers
         {
             try
             {
-                return Ok(new { ferramenta = "VS CODE");
+                return Ok(new { ferramenta = "VS CODE" });
             }
             catch (Exception ex)
             {
